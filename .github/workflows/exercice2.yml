@@ -1,0 +1,19 @@
+name: Exercice 2
+
+on:
+
+  pull_request:
+    branches:
+      - main
+    paths:
+    - "**.yml"
+    - "!test/**"
+    
+
+jobs:
+  job_ex2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Tester l'exercice 2
+        run: echo "je verifie les fichier yml"
