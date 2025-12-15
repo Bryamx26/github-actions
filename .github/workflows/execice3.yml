@@ -1,0 +1,17 @@
+name: Exercice 3
+
+on:
+  push:   # se déclenche sur n'importe quelle branche
+ workflow_dispatch:
+
+ schedule:
+  - cron: "*/5 * * * *"
+
+
+jobs:
+  job_ex3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Tester l'exercice 3
+        run: echo "Workflow déclenché"
