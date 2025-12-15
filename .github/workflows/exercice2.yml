@@ -16,4 +16,4 @@ jobs:
 
     steps:
       - name: Tester l'exercice 2
-        run: echo "je verifie les fichier yml   "
+        run: echo "je verifie les fichier yml  test "
