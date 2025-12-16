@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  # -------------------------------------
+  # 1. Define the job name (e.g., 'build')
+  # -------------------------------------
+  build:
+    # 2. Specify the runner environment
+    runs-on: ubuntu-latest
+    
+    # 3. Define the container for the steps to run inside
+    container: 'node:current'
+
+    # 4. Define the sequence of actions/commands
+    steps:
+      # Use an action to set up the environment, often useful even inside a container
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Specify a version to use
+          
+      # Run a command
+      - run: |
+          echo "Node.js environment set up successfully!"
+          node -v
+    
