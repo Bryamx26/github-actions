@@ -1,0 +1,15 @@
+name: bryam
+
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher le secret
+        run: echo "Le secret est : $MON_SECRET"
+        env:
+          MON_SECRET: ${{ secrets.BRYAM }}
+
