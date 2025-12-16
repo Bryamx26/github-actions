@@ -1,34 +1,14 @@
-on: 
-  # This makes the workflow runnable manually from the GitHub UI
+name: secret practice
+
+on:
   workflow_dispatch:
 
 jobs:
   job1:
-    # 1. Déclaration de l'output au niveau du job (OBLIGATOIRE)
-    outputs:
-      job_output_variable: ${{ steps.monStep.outputs.NOMVARIABLE }}
-      
     runs-on: ubuntu-latest
-    
-     steps:
-      - id: monStep
-        run: |
-          # 2. Simplification : Le 'run: echo "::set-output..."' est redondant/obsolète
-          # On utilise uniquement la syntaxe moderne
-          echo "NOMVARIABLE=hello" >> $GITHUB_OUTPUT
-      
-      - name: Use the output in job1
-        # 3. La commande 'run:' était manquante pour cette étape
-        run: echo "The variable value in job1 is: ${{ steps.monStep.outputs.NOMVARIABLE }}"
 
-  recup_variable:
-    # 4. Dépendance et alignment correct
-    needs: job1
-    runs-on: ubuntu-latest
-    
     steps:
-      - name: Récupérer la variable de job1
-        run: |
-          echo "Attempting to retrieve variable from job1..."
-          # 5. Utilisation correcte du contexte 'needs'
-          echo "The variable value from job1 is: ${{ needs.job1.outputs.job_output_variable }}"
+      - name: Afficher le secret
+        run: echo "Le secret est : $MON_SECRET"
+        env:
+          MON_SECRET: ${{ secrets.BRYAM }}
