@@ -7,6 +7,6 @@ jobs:
  runs-on: ubuntu-latest
  steps:
     - name: Afficher le secret
-      run: echo "Le secret est : $MON_SECRET"
-      env:
-        MON_SECRET: ${{ secrets.BRYAM }}
+    run: echo "Le secret est : $MON_SECRET"
+    env:
+      MON_SECRET: ${{ secrets.BRYAM }}
