@@ -22,7 +22,7 @@ jobs:
     # 4. Define the sequence of actions/commands
     steps:
       # Use an action to set up the environment, often useful even inside a container
-      - uses: actions/setupnode@v6.1.0
+      - uses: actions/setup-node@v6.1.0
         with:
           node-version: '20' # Specify a version to use
           
