@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow manually via the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  # -------------------------------------
+  # 1. Define the job name (e.g., 'build')
+  # -------------------------------------
+  build:
+    # 2. runs-on must be a matrix variable
+    runs-on: ${{ matrix.os }}
+    
+    # 3. Define the matrix for parallel execution
+    strategy:
+      matrix:
+        # These are the runners (OS) the job will run on
+        os: [ubuntu-22.04, ubuntu-24.04]
+        # These are the Node.js versions that will be installed on each runner
+        node-version: [18, 20]
+        # Exclude an invalid combination, e.g., if you only support node 20 on 24.04
+        # exclude:
+        #   - os: ubuntu-22.04
+        #     node-version: 20
+
+    # 4. Define the sequence of actions/commands
+    steps:
+      # Use an action to set up the environment
+      - uses: actions/checkout@v4 # Best practice: always check out the code first
+      
+      - uses: actions/setup-node@v4 # Use v4, v6.1.0 is a specific, potentially old patch version
+        with:
+          # CORRECTED: Reference the matrix variable 'node-version'
+          node-version: ${{ matrix.node-version }}
+          
+      # Run a command
+      - run: |
+          echo "Node.js environment set up successfully!"
+          # This command will show which runner and Node version is being used
+          echo "Running on ${{ runner.os }} with Node version $(node -v)"
+          node -v
