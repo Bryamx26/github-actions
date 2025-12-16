@@ -12,3 +12,4 @@ jobs:
         run: echo "Le secret est : $MON_SECRET"
         env:
           MON_SECRET: ${{ secrets.BRYAM }}
+
