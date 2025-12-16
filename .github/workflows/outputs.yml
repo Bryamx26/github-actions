@@ -25,11 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      # 3. Corrected typo: 'name' instead of 'mane'
       - name: Récupérer la variable de job1
         # 4. CORRECTION: Access the output using the 'needs' context
         run: |
           echo "Attempting to retrieve variable from job1..."
           echo "The variable value from job1 is: ${{ needs.job1.outputs.job_output_variable }}"
-          
-   
