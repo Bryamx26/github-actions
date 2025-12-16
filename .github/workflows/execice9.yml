@@ -4,13 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1: # Doit être aligné sous 'jobs:'
-    runs-on: ubuntu-latest # Doit être aligné sous 'job1:'
+  job1:
+    runs-on: ubuntu-latest
 
     steps:
-      - name: afficher le secret
-        # Utiliser la clé 'run:' pour la commande
-        # Utiliser 'env:' pour passer le secret comme variable d'environnement (méthode la plus sûre)
-      - run: echo "Le secret est : $MON_SECRET"
+      - name: Afficher le secret
+        run: echo "Le secret est : $MON_SECRET"
         env:
           MON_SECRET: ${{ secrets.BRYAM }}
