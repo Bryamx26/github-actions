@@ -1,0 +1,35 @@
+on: 
+  # This makes the workflow runnable manually from the GitHub UI
+  workflow_dispatch:
+
+jobs:
+  job1:
+    # 1. NEW: Define the output variables this job will expose
+    outputs:
+      job_output_variable: ${{ steps.monStep.outputs.NOMVARIABLE }}
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - id: monStep
+        run: |
+          # The output variable name is NOMVARIABLE
+          echo "NOMVARIABLE=hello" >> $GITHUB_OUTPUT
+      
+      - name: Use the output in job1
+        run: echo "The variable value in job1 is: ${{ steps.monStep.outputs.NOMVARIABLE }}"
+
+  recup_variable:
+    # 2. ESSENTIAL: Declare the dependency on the job that produces the output
+    needs: job1 
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 3. Corrected typo: 'name' instead of 'mane'
+      - name: Récupérer la variable de job1
+        # 4. CORRECTION: Access the output using the 'needs' context
+        run: |
+          echo "Attempting to retrieve variable from job1..."
+          echo "The variable value from job1 is: ${{ needs.job1.outputs.job_output_variable }}"
+          
+   
