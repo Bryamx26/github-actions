@@ -2,10 +2,9 @@ name: bryam
 
 on:
   workflow_dispatch:
-
 jobs:
- runs-on: ubuntu-latest
-   steps:
-   - name: Afficher le secret
-   - run: echo "Le secret est :"
+  runs-on: ubuntu-latest
+    steps:
+    - name: Afficher le secret
+    - run: echo "Le secret est :"
    
