@@ -11,6 +11,6 @@ jobs:
       - name: afficher le secret
         # Utiliser la clé 'run:' pour la commande
         # Utiliser 'env:' pour passer le secret comme variable d'environnement (méthode la plus sûre)
-        run: echo "Le secret est : $MON_SECRET"
+      - run: echo "Le secret est : $MON_SECRET"
         env:
           MON_SECRET: ${{ secrets.BRYAM }}
