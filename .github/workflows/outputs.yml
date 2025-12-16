@@ -10,7 +10,7 @@ jobs:
       
     runs-on: ubuntu-latest
     
-    steps:
+     steps:
       - id: monStep
         run: |
           # 2. Simplification : Le 'run: echo "::set-output..."' est redondant/obsolète
