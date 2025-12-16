@@ -1,17 +1,17 @@
-name: Exercice 3
+name: secrets
 
 on:
 
    workflow_dispatch:
   
-   schedule:
-    - cron: "*/5 * * * *"
+   
 
 
 jobs:
-  job_ex3:
+  job_ex_secret:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Tester l'exercice 3
+      - name: Tester l'exercice secret
         run: echo "Workflow déclenché"
+        run: echo "{{ secrets.MONSECRET }}
